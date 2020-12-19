@@ -8,5 +8,4 @@ import com.nelioalves.cursospring.domain.Produto;
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Integer>{
 
-	
 }
