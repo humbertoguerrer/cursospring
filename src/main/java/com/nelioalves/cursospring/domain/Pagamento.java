@@ -1,23 +1,40 @@
 package com.nelioalves.cursospring.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+
+import com.nelioalves.cursospring.domain.enums.EstadoPagamento;
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Pagamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@Id
 	private Integer id;
-	private Date instante;
 
+	private Integer estado;
+	
+	@OneToOne
+	@JoinColumn(name = "pedido_id")
+	@MapsId // para o id ser mapeado e ficar igual o do id do pagamento.
 	private Pedido pedido;
 
 	public Pagamento() {
 	}
 
-	public Pagamento(Integer id, Date instante) {
+	public Pagamento(Integer id, EstadoPagamento estado, Pedido pedido) {
 		super();
 		this.id = id;
-		this.instante = instante;
+		this.estado = estado.getCod();
+		this.pedido = pedido;
 	}
 
 	public Integer getId() {
@@ -28,14 +45,14 @@ public abstract class Pagamento implements Serializable {
 		this.id = id;
 	}
 
-	public Date getInstante() {
-		return instante;
+	public EstadoPagamento getEstado() {
+		return EstadoPagamento.toEnum(estado);
 	}
 
-	public void setInstante(Date instante) {
-		this.instante = instante;
+	public void setEstado(EstadoPagamento estado) {
+		this.estado = estado.getCod();
 	}
-
+	
 	public Pedido getPedido() {
 		return pedido;
 	}

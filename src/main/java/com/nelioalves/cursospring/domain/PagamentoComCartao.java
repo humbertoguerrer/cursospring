@@ -1,17 +1,20 @@
 package com.nelioalves.cursospring.domain;
 
-import java.util.Date;
+import javax.persistence.Entity;
 
+import com.nelioalves.cursospring.domain.enums.EstadoPagamento;
+
+@Entity
 public class PagamentoComCartao extends Pagamento {
 	private static final long serialVersionUID = 1L;
-	
+
 	private Integer numeroDeParcelas;
 
 	public PagamentoComCartao() {
 	}
-	
-	public PagamentoComCartao(Integer id, Date instante, Integer numeroDeParcelas) {
-		super(id, instante);
+
+	public PagamentoComCartao(Integer id, EstadoPagamento estado, Pedido pedido, Integer numeroDeParcelas) {
+		super(id, estado, pedido);
 		this.numeroDeParcelas = numeroDeParcelas;
 	}
 
@@ -23,5 +26,4 @@ public class PagamentoComCartao extends Pagamento {
 		this.numeroDeParcelas = numeroDeParcelas;
 	}
 
-	
 }
