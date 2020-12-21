@@ -12,7 +12,7 @@ public class ItemPedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@JsonIgnore
-	@EmbeddedId //id embutido em classe auxiliar (ItemPedidoPK)
+	@EmbeddedId // id embutido em classe auxiliar (ItemPedidoPK)
 	private ItemPedidoPK id = new ItemPedidoPK();
 
 	private Double desconto;
@@ -35,7 +35,7 @@ public class ItemPedido implements Serializable {
 	public Pedido getPedido() {
 		return id.getPedido();
 	}
-	
+
 	public Produto getProduto() {
 		return id.getProduto();
 	}
