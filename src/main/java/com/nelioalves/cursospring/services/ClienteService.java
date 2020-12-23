@@ -1,5 +1,6 @@
 package com.nelioalves.cursospring.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +20,14 @@ public class ClienteService {
 		Optional<Cliente> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
+	}
+
+	public Cliente insert(Cliente id) {
+		id.setId(null);
+		return repo.save(id);
+	}
+
+	public List<Cliente> findAll() {
+		return repo.findAll();
 	}
 }
