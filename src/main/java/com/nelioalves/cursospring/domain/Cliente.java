@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -29,7 +30,10 @@ public class Cliente implements Serializable {
 	private String cpfOuCnpj;
 	private Integer tipo;
 
-	@OneToMany(mappedBy = "cliente")
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL) // permite que seja apagado entidade que tem objeto
+																// relacionado (nesse caso apagar cliente com endereço
+																// cadastrado). Mapeado no objeto associado que não vai
+																// interromper a deleção.
 	private List<Endereco> endereco = new ArrayList<>();
 
 	@ElementCollection
