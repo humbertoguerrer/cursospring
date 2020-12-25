@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import com.nelioalves.cursospring.DTO.CategoriaDTO;
 import com.nelioalves.cursospring.domain.Categoria;
-import com.nelioalves.cursospring.domain.Cliente;
 import com.nelioalves.cursospring.repositories.CategoriaRepository;
 import com.nelioalves.cursospring.services.exceptions.DataIntegrityException;
 import com.nelioalves.cursospring.services.exceptions.ObjectNotFoundException;
